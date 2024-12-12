@@ -1,0 +1,48 @@
+{% set name = "numba-cuda" %}
+{% set version = "0.0.21" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/numba_cuda-{{ version }}.tar.gz
+  sha256: a95af3abb1c20e1db5d74b49d7322d312cd3a112cdac15e87039938241b9cabb
+
+build:
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+  skip: true  # [s390x]
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - wheel
+    - pip
+  run:
+    - python
+    - numba >=0.59.1
+
+test:
+  imports:
+    - numba_cuda
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/NVIDIA/numba-cuda
+  summary: CUDA target for Numba
+  description: |
+    A Numba target for compiling Python code to excute on CUDA GPUs.
+  license: BSD-2-Clause
+  license_file: LICENSE
+  license_family: BSD
+  doc_url: https://nvidia.github.io/numba-cuda
+  dev_url: https://github.com/NVIDIA/numba-cuda
+
+extra:
+  recipe-maintainers:
+    - cbouss
