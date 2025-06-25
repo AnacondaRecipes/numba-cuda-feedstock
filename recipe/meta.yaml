@@ -1,5 +1,5 @@
 {% set name = "numba-cuda" %}
-{% set version = "0.0.21" %}
+{% set version = "0.15.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/numba_cuda-{{ version }}.tar.gz
-  sha256: a95af3abb1c20e1db5d74b49d7322d312cd3a112cdac15e87039938241b9cabb
+  sha256: a5bca48ace64a9456cf8a9c3dadddda23766cdd04276e2ab002a4c623506b8b2
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  skip: true  # [s390x]
+  skip: true  # [py<39]
 
 requirements:
   host:
