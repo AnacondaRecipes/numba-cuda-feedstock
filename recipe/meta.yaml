@@ -31,13 +31,10 @@ requirements:
     - numba >=0.60.0
     - cuda-bindings >=12.9.1,<14.0.0
     - cuda-core >=0.3.2,<1.0.0
+    # Please see PKG-9812 for discussion about the CUDA dependencies.
     - cuda-version >=12
     - cuda-nvcc-impl
     - cuda-cudart-dev
-    # - cuda-nvrtc
-    # - libnvjitlink
-    # - cuda-cccl
-    # - cuda-nvvm
 
 test:
   requires:
