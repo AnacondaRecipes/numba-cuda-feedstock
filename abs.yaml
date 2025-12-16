@@ -1,0 +1,4 @@
+# Disabling Python 3.14 builds due to the following error:
+# numba_cuda/numba/cuda/cext/_dispatcher.cpp:1050:2: error: #error "Python minor version is not supported."
+# build_env_vars:
+#   ANACONDA_ROCKET_ENABLE_PY314 : yes
