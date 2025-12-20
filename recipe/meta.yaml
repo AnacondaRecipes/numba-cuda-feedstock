@@ -1,13 +1,13 @@
 {% set name = "numba-cuda" %}
-{% set version = "0.22.1" %}
+{% set version = "0.23.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: 8688dd21120ab326c703a1319296a5d889f7db3f17a45e5ac9e22126bb359191
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace("-", "_") }}-{{ version }}.tar.gz
+  sha256: b991cdedaf40b39232d701abf8949e6a4ae93083e1f55f4c9a3aa25e7557cd6c
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -24,7 +24,7 @@ requirements:
     - python
     - setuptools
     - pip
-    - numpy >=2.1.0
+    - numpy {{ numpy }}
   run:
     - python
     - numpy >=1.22
