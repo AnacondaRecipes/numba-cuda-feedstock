@@ -1,5 +1,5 @@
 {% set name = "numba-cuda" %}
-{% set version = "0.29.0" %}
+{% set version = "0.30.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/NVIDIA/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f0d01207bc7c4669647c16f2834b031247b8df4164de91894d47ac589a7bc2f6
+  sha256: 92a347fffa3ff43b196689a521b8fdc5147931cc3d97f1e77786fdd24eaf3056
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
