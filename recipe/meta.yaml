@@ -1,5 +1,5 @@
 {% set name = "numba-cuda" %}
-{% set version = "0.30.2" %}
+{% set version = "0.30.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/NVIDIA/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 051a99926161e44a8d7cfa941909d89197f2dc7eb998facff12e93c60bbeb2ac
+  sha256: c3ade7ffbe2efc766a15aa52af8eb0c6be2f1bac035bf524c86f62b1f2275d80
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -25,6 +25,7 @@ requirements:
     - setuptools
     - wheel
     - numpy {{ numpy }}
+    - numpy
   run:
     - python
     - packaging
@@ -37,6 +38,12 @@ requirements:
     - cuda-version >=12
     - cuda-nvcc-impl
     - cuda-cudart-dev
+    - {{ pin_compatible('numpy') }}
+  run_constrained:
+    - cuda-bindings ==13.*
+    - cuda-toolkit ==13.*
+    - nvidia-nvjitlink-cu12 >=12.3.0,<13.0.0
+    - nvidia-nvjitlink >=13.0.0,<14.0.0
 
 test:
   requires:
